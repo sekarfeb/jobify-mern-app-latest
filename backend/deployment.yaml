@@ -2,19 +2,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend-app-jobify-deployment
+  name: backend-app-jobify-deployment-env
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: backend-app-jobify
+      app: backend-app-jobify-env
   template:
     metadata:
       labels:
-        app: backend-app-jobify
+        app: backend-app-jobify-env
     spec:
       containers:
-        - name: app-jobify
+        - name: app-jobify-env
           image: sekarfeb/jobify-mern-app-latest-backend-jobify:latest
           ports:
             - containerPort: 5000
@@ -23,10 +23,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: backend-app-jobify-service
+  name: backend-app-jobify-service-env
 spec:
   selector:
-    app: backend-app-jobify 
+    app: backend-app-jobify-env 
   ports:
     - protocol: TCP
       port: 5000
